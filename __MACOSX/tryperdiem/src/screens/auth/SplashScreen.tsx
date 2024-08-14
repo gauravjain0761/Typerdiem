@@ -24,11 +24,10 @@ const SplashScreen = (props: Props) => {
     getUserInfo();
   }, []);
 
+  //check user login
   const getUserInfo = async () => {
     let isUser = await getAsyncToken();
-    let userOnboarding = await getAsyncUserOnboarding();
-    console.log('isUser',isUser);
-    
+    let userOnboarding = await getAsyncUserOnboarding();    
     if (isUser) {
       dispatchNavigation(screenName.HomeScreen);
     } else {

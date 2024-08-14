@@ -18,6 +18,7 @@ import {useState} from 'react';
 import {getText} from '../../utils/commonFunction';
 import {string} from '../../i18n/locales/en';
 import moment from 'moment';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 const DateSelect = ({
   placeholder,
@@ -29,16 +30,10 @@ const DateSelect = ({
   const [timeData, setTimeData] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
 
-  const onChangePress = (event: DateTimePickerEvent, date: Date) => {
-    const {
-      type,
-      nativeEvent: {timestamp, utcOffset},
-    } = event;
+  const onChangePress = (date: Date) => {
+    setShowDatePicker(false);
     onChangeText(date);
     setTimeData(date);
-    console.log('event.type', event.type);
-
-    setShowDatePicker(false);
   };
 
   return (
@@ -60,13 +55,14 @@ const DateSelect = ({
         </Text>
         <Image source={Icons.calenadar} style={styles.calenadar} />
       </TouchableOpacity>
-      {showDatePicker ? (
-        <RNDateTimePicker
-          value={timeData}
-          onChange={onChangePress}
-          testID="datePicker"
-        />
-      ) : null}
+      <DateTimePickerModal
+        isVisible={showDatePicker}
+        mode="date"
+        date={timeData}
+        onConfirm={onChangePress}
+        onCancel={() => setShowDatePicker(false)}
+        minimumDate={new Date()} 
+      />
     </View>
   );
 };
@@ -108,6 +104,11 @@ const styles = StyleSheet.create({
     height: hp(24),
     width: hp(24),
     tintColor: colors.borderGreyLight,
+  },
+  pickerContainer: {
+    backgroundColor: 'lightblue', // Custom background color
+    borderRadius: 10,
+    padding: 10,
   },
 });
 

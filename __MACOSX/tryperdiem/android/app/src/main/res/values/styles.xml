@@ -1,5 +1,10 @@
 <resources>
 
+
+	<style name="SpinnerDatePickerDialog" parent="SpinnerDatePickerDialogBase">
+		<item name="android:colorAccent">#fff</item>
+	</style>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->

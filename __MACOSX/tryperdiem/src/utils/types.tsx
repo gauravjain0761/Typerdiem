@@ -80,4 +80,3 @@ export type PrimaryButtonProps = {
   containerStyle?: ViewStyle;
   isAddIconShow?: boolean;
 };
-

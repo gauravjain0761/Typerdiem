@@ -40,7 +40,7 @@ export const makeAPIRequest = ({
       })
       .catch((error) => {
         if (error?.response?.status === 401) {
-          clearAsync();
+          clearAsync(); //clear asyncStorage
           navigationRef?.current?.reset({
             index: 1,
             routes: [{ name: screenName.LoginSignupScreen }],

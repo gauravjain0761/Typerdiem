@@ -1,9 +1,8 @@
 //import liraries
-import { Image, StyleSheet, Text, TouchableOpacity } from "react-native";
-import { SignInBtnProps } from "../../utils/types";
-import { commonFontStyle, hp, wp } from "../../theme/fonts";
-import { colors } from "../../theme/colors";
-
+import {Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {SignInBtnProps} from '../../utils/types';
+import {commonFontStyle, hp, wp} from '../../theme/fonts';
+import {colors} from '../../theme/colors';
 
 const SignInBtn = ({
   iconName,
@@ -16,8 +15,7 @@ const SignInBtn = ({
   return (
     <TouchableOpacity
       onPress={onBtnPress}
-      style={[styles.container, containerStyle]}
-    >
+      style={[styles.container, containerStyle]}>
       <Image
         source={iconName}
         resizeMode="contain"
@@ -30,9 +28,8 @@ const SignInBtn = ({
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    // justifyContent: 'center',
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     borderRadius: wp(40),
     paddingLeft: wp(65),
     height: hp(50),
@@ -42,7 +39,6 @@ const styles = StyleSheet.create({
     height: wp(38),
   },
   titleText: {
-    // lineHeight: fontSize(23.75),
     marginLeft: wp(5),
     ...commonFontStyle(400, 18, colors.primary),
   },

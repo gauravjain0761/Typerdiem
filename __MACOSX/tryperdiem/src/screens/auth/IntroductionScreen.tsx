@@ -25,26 +25,9 @@ import {dispatchNavigation} from '../../utils/globalFunctions';
 import {setAsyncUserOnboarding} from '../../utils/asyncStorageManager';
 import {getText} from '../../utils/commonFunction';
 import {string} from '../../i18n/locales/en';
+import { dummyData } from '../../utils/dummyData';
 
 type Props = {};
-
-const dummyData = [
-  {
-    id: 1,
-    title: getText(string.introduction.list1),
-    subTitle: getText(string.introduction.listSub1),
-  },
-  {
-    id: 2,
-    title: getText(string.introduction.list2),
-    subTitle: getText(string.introduction.listSub2),
-  },
-  {
-    id: 3,
-    title: getText(string.introduction.list3),
-    subTitle: getText(string.introduction.listSub3),
-  },
-];
 
 const IntroductionScreen = (props: Props) => {
   const flatlistRef = useRef(null);
@@ -57,7 +40,7 @@ const IntroductionScreen = (props: Props) => {
         <TouchableOpacity
           onPress={() => {
             setAsyncUserOnboarding(true);
-            dispatchNavigation(screenName.SignIn);
+            dispatchNavigation(screenName.SignIn);//login screen navigation
           }}
           style={styles.skipView}>
           <Text style={styles.skipText}>Skip</Text>
@@ -86,6 +69,7 @@ const IntroductionScreen = (props: Props) => {
         <Text style={styles.des}>{dummyData[index].subTitle}</Text>
         <PrimaryButton
           onPress={() => {
+            //next item show
             if (index < 2) {
               flatlistRef?.current?.scrollToIndex({
                 index: index + 1,
@@ -93,7 +77,7 @@ const IntroductionScreen = (props: Props) => {
               });
             } else {
               setAsyncUserOnboarding(true);
-              dispatchNavigation(screenName.SignIn);
+              dispatchNavigation(screenName.SignIn);//login screen navigation
             }
           }}
           containerStyle={styles.btnStyle}

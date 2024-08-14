@@ -39,6 +39,7 @@ export const passwordCheck = (string: string) => {
   return reg.test(string);
 };
 
+//navigation reset event
 export const resetNavigation = (name: string, params?: any) => {
   navigationRef.reset({
     index: 0,
@@ -46,10 +47,12 @@ export const resetNavigation = (name: string, params?: any) => {
   });
 };
 
+//getText string
 export const getText = (text: string) => {
   return text;
 };
 
+//show success toast message
 export const successToast = (message: string) => {
     Snackbar.show({
         text: message,
@@ -58,6 +61,7 @@ export const successToast = (message: string) => {
       });
 };
 
+//show error toast message
 export const errorToast = (message: string) => {
   Snackbar.show({
     text: message,
@@ -66,6 +70,7 @@ export const errorToast = (message: string) => {
   });
 };
 
+//show info toast message
 export const infoToast = (message: string) => {
   Snackbar.show({
     text: message,

@@ -43,6 +43,7 @@ const SignIn = ({navigation, route}: RouterProps) => {
     // });
   };
 
+  //login with email and password
   const onPressSignIn = async () => {
     if (userName.trim().length === 0) {
       infoToast('Please enter your username');
@@ -50,15 +51,13 @@ const SignIn = ({navigation, route}: RouterProps) => {
       infoToast('Please enter your password');
     } else if (password.trim().length < 6) {
       infoToast('Your password must be at least 6 characters');
-    }else if(userName.trim() !== "admin" && password.trim() !== "password123"){
+    }else if(userName.trim() !== "admin" || password.trim() !== "password123"){
       infoToast('user not found');
     } else {
       setAsyncToken(true)
       dispatchNavigation(screenName.HomeScreen)
     }
   };
-
-  const onPressBack = () => navigation.goBack();
 
   return (
     <SafeAreaView edges={['top']} style={styles.container}>

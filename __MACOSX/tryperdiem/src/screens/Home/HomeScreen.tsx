@@ -1,4 +1,5 @@
 import {
+  Alert,
   FlatList,
   Image,
   StyleSheet,
@@ -32,25 +33,13 @@ import {
   onCreateTriggerNotification,
   onDisplayNotification,
 } from '../../utils/notificationHandle';
+import {listData} from '../../utils/dummyData';
 
 type Props = {};
 
-const listData = [
-  {id: 1, name: 'Item A', isSelect: false},
-  {id: 2, name: 'Item B', isSelect: false},
-  {id: 3, name: 'Item C', isSelect: false},
-  {id: 4, name: 'Item D', isSelect: false},
-  {id: 5, name: 'Item E', isSelect: false},
-  {id: 6, name: 'Item F', isSelect: false},
-  {id: 7, name: 'Item G', isSelect: false},
-  {id: 8, name: 'Item H', isSelect: false},
-  {id: 9, name: 'Item J', isSelect: false},
-  {id: 10, name: 'Item K', isSelect: false},
-];
-
 const HomeScreen = (props: Props) => {
-  const [list, setList] = useState([]);
-  const [addEvent, setAddEvent] = useState(false);
+  const [list, setList] = useState([]); //user event list state
+  const [addEvent, setAddEvent] = useState(false); //add event modal state
 
   const onUserData = async () => {
     const listOfData = await getAsyncUserList();
@@ -63,14 +52,28 @@ const HomeScreen = (props: Props) => {
   };
 
   useEffect(() => {
-    onUserData();
+    onUserData(); //user get all event list
   }, [addEvent]);
 
+  //logout function
   const onLogoutPress = async () => {
-    await clearAsync();
-    dispatchNavigation(screenName.SignIn);
+    Alert.alert('Logout', 'Are you sure you want to logout?', [
+      {
+        text: 'No',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {
+        text: 'Yes',
+        onPress: async () => {
+          await clearAsync();
+          dispatchNavigation(screenName.SignIn);
+        },
+      },
+    ]);
   };
 
+  //change toggle event
   const changeValue = item => {
     const update = list.map(list => {
       if (list.id == item.id) {
@@ -79,7 +82,7 @@ const HomeScreen = (props: Props) => {
             onCreateTriggerNotification({
               id: item?.id,
               title: item.name,
-              body: 'Main body content of the notification',
+              body: item.name,
             });
         }
         return {
@@ -96,10 +99,12 @@ const HomeScreen = (props: Props) => {
     setAsyncUserList(update);
   };
 
+  //open event modal
   const onEventPress = () => {
     setAddEvent(true);
   };
 
+  //render event list
   const renderItem = ({item}) => {
     return (
       <View style={styles.cardView}>

@@ -29,6 +29,7 @@ export const  onDisplayNotification =async(message: any)=> {
 }
 
 
+//notification trigger 
 export const onCreateTriggerNotification = async(message: any) => {
   const channelId = await notifee.createChannel({
     id: "default",
@@ -36,9 +37,10 @@ export const onCreateTriggerNotification = async(message: any) => {
     importance: AndroidImportance.HIGH,
   });
 
+ 
   const trigger: TimestampTrigger = {
     type: TriggerType.TIMESTAMP,
-    timestamp: Date.now() + 600000,
+    timestamp: Date.now() + 600000, //every 10 min api call
     repeatFrequency: RepeatFrequency.HOURLY,
     alarmManager:true
   };

@@ -27,6 +27,8 @@ const AddEventModal = ({isVisible, onClose, onConfirm}) => {
   const [addText, setAddText] = useState('');
   const [dateValue, setDateValue] = useState('');
 
+
+  //new add event function
   const onPressNewAdd = async () => {
     if (addText.trim().length == 0) {
       infoToast('Please enter your event');
@@ -34,15 +36,11 @@ const AddEventModal = ({isVisible, onClose, onConfirm}) => {
       infoToast('Please select date');
     } else {
       const listOfData = await getAsyncUserList();
-      console.log('listOfData',listOfData);
-      
       const listData = [
         ...listOfData,
         {id: listOfData.length+1, name: addText, date: dateValue},
       ];
-
       setAsyncUserList(listData);
-
       setDateValue('');
       setAddText('');
       onClose()
@@ -61,7 +59,7 @@ const AddEventModal = ({isVisible, onClose, onConfirm}) => {
           <Text style={styles.itemText}>{getText(string.home.newEvent)}</Text>
           <TouchableOpacity
             onPress={() => {
-              onClose();
+              onClose(); 
               setDateValue('');
               setAddText('');
             }}>

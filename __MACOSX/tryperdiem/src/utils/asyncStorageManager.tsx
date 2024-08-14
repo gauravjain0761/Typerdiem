@@ -11,6 +11,7 @@ export const asyncKeys = {
   fcm_token: "@fcm_token",
 };
 
+//clear asyncStorage 
 export const clearAsync = async () => {
   await AsyncStorage.multiRemove([
     asyncKeys.token,
@@ -18,10 +19,12 @@ export const clearAsync = async () => {
   ]);
 };
 
+//set token asyncStorage
 export const setAsyncToken = async (token: string) => {
   await AsyncStorage.setItem(asyncKeys.token, JSON.stringify(token));
 };
 
+//get token asyncStorage
 export const getAsyncToken = async () => {
   const token = await AsyncStorage.getItem(asyncKeys.token);
   if (token) {
@@ -31,23 +34,12 @@ export const getAsyncToken = async () => {
   }
 };
 
-export const setAsyncUserInfo = async (user: any) => {
-  await AsyncStorage.setItem(asyncKeys.user_info, JSON.stringify(user));
-};
-
-export const getAsyncUserInfo = async () => {
-  const userInfo = await AsyncStorage.getItem(asyncKeys.user_info);
-  if (userInfo) {
-    return JSON.parse(userInfo);
-  } else {
-    return null;
-  }
-};
-
+//set onboarding asyncStorage
 export const setAsyncUserOnboarding = async (user: any) => {
   await AsyncStorage.setItem(asyncKeys.user_onboarding, JSON.stringify(user));
 };
 
+//get onboarding asyncStorage
 export const getAsyncUserOnboarding = async () => {
   const userInfo = await AsyncStorage.getItem(asyncKeys.user_onboarding );
   if (userInfo) {
@@ -57,10 +49,12 @@ export const getAsyncUserOnboarding = async () => {
   }
 };
 
+//set user event asyncStorage
 export const setAsyncUserList = async (user: any) => {
   await AsyncStorage.setItem(asyncKeys.user_listData, JSON.stringify(user));
 };
 
+//get user event asyncStorage
 export const getAsyncUserList = async () => {
   const userInfo = await AsyncStorage.getItem(asyncKeys.user_listData );
   if (userInfo) {

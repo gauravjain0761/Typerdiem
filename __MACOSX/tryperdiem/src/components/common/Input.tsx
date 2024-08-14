@@ -6,11 +6,11 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-} from "react-native";
-import { InputProps } from "../../utils/types";
-import { commonFontStyle, hp, wp } from "../../theme/fonts";
-import { colors } from "../../theme/colors";
-import { Icons } from "../../assets";
+} from 'react-native';
+import {InputProps} from '../../utils/types';
+import {commonFontStyle, hp, wp} from '../../theme/fonts';
+import {colors} from '../../theme/colors';
+import {Icons} from '../../assets';
 
 const Input = ({
   placeholder,
@@ -20,7 +20,7 @@ const Input = ({
   secureTextEntry,
   onPressEye,
   isShowEyeIcon,
-  theme = "first",
+  theme = 'first',
   autoCorrect,
   inputRef,
   returnKeyType,
@@ -34,11 +34,10 @@ const Input = ({
       </Text>
       <View
         style={
-          theme === "first"
-            ? { ...styles.firstThemeContainer }
-            : { ...styles.secondThemeContainer }
-        }
-      >
+          theme === 'first'
+            ? {...styles.firstThemeContainer}
+            : {...styles.secondThemeContainer}
+        }>
         <TextInput
           {...rest}
           ref={inputRef}
@@ -79,8 +78,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: hp(5),
     backgroundColor: colors.inputBack,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: wp(20),
   },
   secondThemeContainer: {
@@ -88,8 +87,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: hp(5),
     backgroundColor: colors.white,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: wp(20),
     borderWidth: 1.5,
     borderColor: colors.inputBorder,
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
   eyeIconStyle: {
     height: hp(26),
     width: hp(26),
-    tintColor: "#BDBDBD",
+    tintColor: '#BDBDBD',
   },
 });
 
